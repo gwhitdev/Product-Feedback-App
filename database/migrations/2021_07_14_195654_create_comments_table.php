@@ -15,7 +15,7 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('comment_detail');
+            $table->string('comment_detail',255);
             $table->boolean('removed')->default(false);
             $table->timestamps();
             $table->bigInteger('feedback_id')->unsigned();

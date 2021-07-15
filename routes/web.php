@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\CommentsController;
-use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\RepliesController;
 use App\Http\Controllers\StatusController;
 /*
@@ -25,27 +25,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/feedback', [FeedbackController::class, 'index']);
-Route::post('/feedback', [FeedbackController::class, 'create']);
-Route::get('/feedback/{feedback_id}', [FeedbackController::class, 'feedback_detail']);
-Route::get('/feedback/{feedback_id}/edit', [FeedbackController::class, 'feedback_edit']);
-Route::post('/feedback/{feedback_id}/edit', [FeedbackController::class, 'feedback_update']);
-Route::get('/feedback/{feedback_id}/delete', [FeedbackController::class, 'feedback_delete']);
+Route::get('/feedback', [FeedbackController::class, 'index'])->middleware('auth')->name('feedback');
+Route::post('/feedback', [FeedbackController::class, 'create'])->middleware('auth');
+Route::get('/feedback/{feedback_id}', [FeedbackController::class, 'detail'])->middleware('auth');
+Route::get('/feedback/{feedback_id}/edit', [FeedbackController::class, 'edit'])->middleware('auth');
+Route::post('/feedback/{feedback_id}/edit', [FeedbackController::class, 'update'])->middleware('auth');
+Route::get('/feedback/{feedback_id}/delete', [FeedbackController::class, 'delete'])->middleware('auth');
 
-Route::get('/feedback/{feedback_id}/comments', [CommentsController::class, 'feedback_comments']);
-Route::post('/feedback/{feedback_id}/comments', [CommentsController::class, 'comments_create']);
-Route::get('/feedback/{feedback_id}/comments/{comment_id}', [CommentsController::class, 'comment_detail']);
-Route::get('/feedback/{feedback_id}/comments/{comment_id}/edit', [CommentsController::class, 'comment_edit']);
-Route::post('/feedback/{feedback_id}/comments/{comment_id}/edit', [CommentsController::class, 'comment_update']);
-Route::get('/feedback/{feedback_id}/comments/{comment_id}/delete', [CommentsController::class, 'comment_delete']);
+Route::get('/feedback/{feedback_id}/comments', [CommentsController::class, 'index'])->middleware('auth');
+Route::post('/feedback/{feedback_id}/comments', [CommentsController::class, 'create'])->middleware('auth');
+Route::get('/feedback/{feedback_id}/comments/{comment_id}', [CommentsController::class, 'detail'])->middleware('auth');
+Route::get('/feedback/{feedback_id}/comments/{comment_id}/edit', [CommentsController::class, 'edit'])->middleware('auth');
+Route::post('/feedback/{feedback_id}/comments/{comment_id}/update', [CommentsController::class, 'update'])->middleware('auth');
+Route::get('/feedback/{feedback_id}/comments/{comment_id}/delete', [CommentsController::class, 'delete'])->middleware('auth');
 
-Route::get('/comments/{comment_id}/replies', [RepliesController::class,'comment_replies']);
-Route::post('/comments/{comment_id}/replies', [RepliesController::class, 'reply_create']);
-Route::get('/comments/{comment_id}/replies/{reply_id}', [RepliesController::class, 'reply_detail']);
-Route::get('/comments/{comment_id}/replies/{reply_id}/edit', [RepliesController::class, 'reply_edit']);
-Route::post('/comments/{comment_id}/replies/{reply_id}/edit', [RepliesController::class, 'reply_update']);
-Route::get('/comments/{comment_id}/replies/{reply_id}/delete', [RepliesController::class, 'reply_delete']);
+Route::get('/comments/{comment_id}/replies', [RepliesController::class,'index'])->middleware('auth');
+Route::post('/comments/{comment_id}/replies', [RepliesController::class, 'create'])->middleware('auth');
+Route::get('/comments/{comment_id}/replies/{reply_id}', [RepliesController::class, 'detail'])->middleware('auth');
+Route::get('/comments/{comment_id}/replies/{reply_id}/edit', [RepliesController::class, 'edit'])->middleware('auth');
+Route::post('/comments/{comment_id}/replies/{reply_id}/edit', [RepliesController::class, 'update'])->middleware('auth');
+Route::get('/comments/{comment_id}/replies/{reply_id}/delete', [RepliesController::class, 'delete'])->middleware('auth');
 
-Route::post('/feedback/{feedback_id}/status/{status_id}/change', [StatusController::class,'update_status']);
+Route::get('/feedback/{feedback_id}/change-status/{status_id}', [StatusController::class,'update_status'])->middleware('auth');
 
-Route::post('/feedback/{feedback_id}/category/{category_id}/change',[StatusController::class, 'update_category']);
+Route::get('/feedback/{feedback_id}/change-category/{category_id}',[CategoriesController::class, 'update_category'])->middleware('auth');

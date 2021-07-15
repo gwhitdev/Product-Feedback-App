@@ -16,7 +16,7 @@ class CreateRepliesTable extends Migration
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->boolean('removed')->default(false);
-            $table->string('reply_detail');
+            $table->string('reply_detail',255);
             $table->timestamps();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('comment_id')->unsigned()->nullable();
