@@ -1,18 +1,15 @@
 <x-inside-layout>
-    <div class="col-span-4 justify-center row-span-2">
-        Inside nav
+    <div class="justify-center col-span-5 col-start-2 row-span-2 p-3">
+        <livewire:inside-nav :feedback="$feedback"/>
         <livewire:suggestion-card :feedback="$feedback" />
     </div>
-    <div class="col-span-4 m-3 row-span-4 bg-white rounded-xl p-3">
+    <div class="col-span-5 col-start-2 row-span-4 p-3 m-3 bg-white rounded-xl">
         @foreach($feedback->comment as $comment)
-        <li>{{$comment->user_id }}
+        <li>{{ $comment->user_id }}
         <li>{{ $comment->comment_detail }}
         @endforeach
     </div>
-    <div class="col-span-4 m-3 row-span-2 bg-white rounded-xl p-3">
+    <div class="col-span-5 col-start-2 row-span-2 p-3 m-3 bg-white rounded-xl">
         New comment
-    </div>
-    
-   
-    
+    </div>   
 </x-inside-layout>

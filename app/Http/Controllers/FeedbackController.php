@@ -30,7 +30,6 @@ class FeedbackController extends Controller
         try
         {
             $feedback->save();
-            //$fId = $feedback->id();
             $request->session()->flash('flash.banner','Your feedback has been created.');
             $request->session()->flash('flash.bannerStyle','success');
             return redirect('/feedback');
@@ -59,12 +58,9 @@ class FeedbackController extends Controller
         }
         catch(Exception $e)
         {
-            $request->session()->flash('flash.bannerStyle','danger');
-            $request->session()->flash('flash.banner', 'Error: feedback not created!');
             return redirect('/feedback');
         }
-        $request->session()->flash('flash.bannerStyle','success');
-        $request->session()->flash('flash.banner','Feedback created!');
+        
         $categories = Category::all();
         $category = $feedback->category_id;
         return view('feedback/edit',["feedback"=>$feedback,"categories"=>$categories,"feedback_category"=>$category]);

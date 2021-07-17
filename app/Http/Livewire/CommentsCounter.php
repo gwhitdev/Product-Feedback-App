@@ -18,7 +18,6 @@ class CommentsCounter extends Component
         {
             $numOfReplies += $comment->replies->count();
         }
-        error_log($numOfReplies);
         return $numOfReplies;
     }
 
