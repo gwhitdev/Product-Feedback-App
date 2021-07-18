@@ -1,0 +1,1 @@
+<button wire:click='goBack' class="flex-none w-36">< Go back</button>

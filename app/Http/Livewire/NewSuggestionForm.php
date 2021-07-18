@@ -25,9 +25,7 @@ class NewSuggestionForm extends Component
 
     public function submit()
     {
-        
-        $this->validate();
-        
+        $this->validate();        
         $new_feedback = new Feedback;
         $new_feedback->title = $this->title;
         $new_feedback->detail = $this->detail;

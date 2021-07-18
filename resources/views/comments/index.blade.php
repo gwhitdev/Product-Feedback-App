@@ -1,4 +1,5 @@
 <x-app-layout>
+    <livewire:standard-nav />
     @if($feedback)
         <li>Feedback title{{ $feedback->title }}</li>
     @endif
