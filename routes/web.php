@@ -32,6 +32,7 @@ Route::get('/dashboard', [UsersController::class, 'index'])->middleware('auth')-
 // FEEDBACK ROUTES
 Route::get('/feedback', [FeedbackController::class, 'index'])->middleware('auth')->name('feedback');
 Route::post('/feedback', [FeedbackController::class, 'create'])->middleware('auth');
+Route::get('/feedback/new', [FeedbackController::class, 'new'])->middleware('auth');
 Route::get('/feedback/{feedback_id}', [FeedbackController::class, 'detail'])->middleware('auth');
 Route::get('/feedback/{feedback_id}/edit', [FeedbackController::class, 'edit'])->middleware('auth');
 Route::post('/feedback/{feedback_id}/edit', [FeedbackController::class, 'update'])->middleware('auth');

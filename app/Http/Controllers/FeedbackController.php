@@ -43,6 +43,13 @@ class FeedbackController extends Controller
         return redirect('/feedback');
     }
 
+    public function new(Request $request)
+    {
+        $categories = Category::all();
+
+        return view('/feedback/new',['categories'=>$categories]);
+    }
+
     public function detail(Request $request, $feedback_id)
     {
         $feedback = Feedback::find($feedback_id);
@@ -63,7 +70,7 @@ class FeedbackController extends Controller
         
         $categories = Category::all();
         $category = $feedback->category_id;
-        return view('feedback/edit',["feedback"=>$feedback,"categories"=>$categories,"feedback_category"=>$category]);
+        return view('feedback/edit',["feedback"=>$feedback,"categories"=>$categories]);
     }
 
     public function update(Request $request, $feedback_id)
