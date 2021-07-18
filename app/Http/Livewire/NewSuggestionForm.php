@@ -9,8 +9,7 @@ class NewSuggestionForm extends Component
 {
     public $title;
     public $detail;
-    public $category_id;
-    public $feedback_id;
+    public $cat_id;
     public $status = 1;
     public $user_id;
 
@@ -19,23 +18,25 @@ class NewSuggestionForm extends Component
     protected $rules = [
         'title'=>'required',
         'detail'=>'required',
-        'category_id'=>'required',
+        'cat_id'=>'required',
         'status'=>'required',
         'user_id'=>'required',
     ];
 
-    
     public function submit()
     {
+        
         $this->validate();
+        
         $new_feedback = new Feedback;
         $new_feedback->title = $this->title;
         $new_feedback->detail = $this->detail;
-        $new_feedback->category_id = $this->category_id;
+        $new_feedback->category_id = $this->cat_id;
         $new_feedback->user_id = $this->user_id;
         $new_feedback->status_id = $this->status;
         $new_feedback->save();
-        return redirect("/feedback/$this->feedback_id");
+        
+        return redirect("/feedback");
     }
     public function mount($categories)
     {
