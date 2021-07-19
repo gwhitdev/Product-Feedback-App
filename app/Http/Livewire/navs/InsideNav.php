@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Navs;
 
 use Livewire\Component;
 
@@ -13,6 +13,6 @@ class InsideNav extends Component
     }
     public function render()
     {
-        return view('livewire.inside-nav');
+        return view('livewire.navs.inside-nav');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Navs;
 
 use Livewire\Component;
 
@@ -19,6 +19,6 @@ class StandardNav extends Component
     public function render()
     {
         
-        return view('livewire.standard-nav');
+        return view('livewire.navs.standard-nav');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Suggestion_components;
 
 use Livewire\Component;
 
@@ -14,6 +14,6 @@ class CategoryBadge extends Component
     }
     public function render()
     {
-        return view('livewire.category-badge');
+        return view('livewire.suggestion_components.category-badge');
     }
 }

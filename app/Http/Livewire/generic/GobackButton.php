@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Generic;
 
 use Livewire\Component;
 
@@ -32,6 +32,6 @@ class GobackButton extends Component
     }
     public function render()
     {
-        return view('livewire.goback-button');
+        return view('livewire.generic.goback-button');
     }
 }

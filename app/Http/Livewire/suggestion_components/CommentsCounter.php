@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Suggestion_components;
 
 use Livewire\Component;
 
@@ -34,6 +34,6 @@ class CommentsCounter extends Component
     }
     public function render()
     {
-        return view('livewire.comments-counter');
+        return view('livewire.suggestion_components.comments-counter');
     }
 }

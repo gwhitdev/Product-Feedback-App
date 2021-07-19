@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Navs;
 
 use Livewire\Component;
 
@@ -9,6 +9,6 @@ class MenuBar extends Component
     
     public function render()
     {
-        return view('livewire.menu-bar');
+        return view('livewire.navs.menu-bar');
     }
 }
