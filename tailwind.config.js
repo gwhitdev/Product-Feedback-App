@@ -13,7 +13,12 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                'jost': ['Jost']
             },
+            backgroundImage: theme => ({
+                'header-image': "url('/storage/imgages/desktop/background-header.png')",
+
+              }),
            
         },
     },

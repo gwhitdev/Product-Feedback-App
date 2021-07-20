@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Suggestion_components;
 
 use Livewire\Component;
 use App\Models\Feedback;
@@ -43,7 +43,7 @@ class NewSuggestionForm extends Component
     }
     public function render()
     {
-        return view('livewire.new-suggestion-form');
+        return view('livewire.suggestion_components.new-suggestion-form');
     }
     
 }

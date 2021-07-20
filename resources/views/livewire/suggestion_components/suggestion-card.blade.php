@@ -1,4 +1,4 @@
-<div class="py-3 m-3 bg-white rounded-xl">
+<div class="py-3 m-3 mb-5 bg-white rounded-xl">
     <div class="grid grid-cols-8 grid-rows-1 p-3">
         <div class="col-span-1 ">
             <livewire:suggestion_components.vote-button :votes="$votes" :feedback="$feedback_id"/>

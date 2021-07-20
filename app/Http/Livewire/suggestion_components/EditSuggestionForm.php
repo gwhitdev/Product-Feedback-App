@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Suggestion_components;
 
 use Livewire\Component;
 use App\Models\Feedback;
 
-class EditSuggestionFormTest extends Component
+class EditSuggestionForm extends Component
 {
     public $title;
     public $detail;
@@ -20,10 +20,6 @@ class EditSuggestionFormTest extends Component
         'category_id'=>'required'
     ];
 
-    public function updated($propertyName) {
-
-        $this->validateOnly($this->title);
-    }
     public function submit()
     {
         $this->validate();
@@ -34,10 +30,6 @@ class EditSuggestionFormTest extends Component
         $new_feedback->save();
         return redirect("/feedback/$this->feedback_id");
     }
-    public function render()
-    {
-        return view('livewire.edit-suggestion-form-test');
-    }
     public function mount($feedback,$categories)
     {
         $this->feedback_id = $feedback->id;
@@ -47,4 +39,9 @@ class EditSuggestionFormTest extends Component
         
         $this->categories = $categories;
     }
+    public function render()
+    {
+        return view('livewire.suggestion_components.edit-suggestion-form');
+    }
+    
 }

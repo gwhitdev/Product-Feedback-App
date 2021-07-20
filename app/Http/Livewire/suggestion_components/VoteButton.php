@@ -22,7 +22,7 @@ class VoteButton extends Component
         $feedback->votes = $feedback->votes + 1;
         $feedback->save();
         $this->getNewVotes();
-        return view('livewire.vote-button');
+        return view('livewire.suggestion_components.vote-button');
     }
     
     public function mount($votes,$feedback)

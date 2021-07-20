@@ -47,7 +47,7 @@ class FeedbackController extends Controller
     {
         $categories = Category::all();
 
-        return view('/feedback/new',['categories'=>$categories]);
+        return view('feedback/new',['categories'=>$categories]);
     }
 
     public function detail(Request $request, $feedback_id)
