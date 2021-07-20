@@ -1,6 +1,6 @@
-<div class="bg-cover grid grid-cols-4 grid-rows-1 md:flex md:flex-col-reverse md:h-[187px] md:rounded-xl"style="background-image:url(http://localhost:8000/storage/images/desktop/background-header.png)"> 
-    <div class="col-span-3 m-3 ml-5 text-white">
-        <div><span class="font-bold text-[15pt] md:text-[20pt]">
+<div class="bg-cover grid grid-cols-4 grid-rows-1 md:flex lg:row-span-2 md:h-[187px] md:rounded-xl"style="background-image:url(http://localhost:8000/storage/images/desktop/background-header.png)"> 
+    <div class="flex col-span-3 m-3 ml-5 text-white lg:flex-col-reverse ">
+        <div><span class="font-bold text-[15pt] lg:mt-10 md:text-[20pt]">
             Frontend Mentor<br>
         </span>
         <span class="text-[13pt] mt-[-10px] md:text-[12pt]">

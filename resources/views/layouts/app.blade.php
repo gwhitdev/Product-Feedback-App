@@ -27,23 +27,19 @@
         <div class="container flex h-screen mx-auto md:mt-10">
 
         <div class="grid w-screen h-screen grid-cols-1 grid-rows-4 gap-5 md:grid-rows-4 md:grid-cols-1 lg:grid-rows-1 lg:grid-cols-4">
-            <div class="z-10 h-[72px] md:h-auto grid grid-cols-1 grid-rows-1 row-span-1 md:grid-rows-1 md:grid-cols-3 md:col-span-3 lg:grid-rows-3 lg:grid-cols-1 lg:col-span-1 ">
+            <div class="z-10 h-[72px] lg:h-full grid grid-cols-1 grid-rows-1 row-span-1 md:grid-rows-1 md:grid-cols-3 md:col-span-3 lg:grid-rows-6 lg:grid-cols-1 lg:col-span-1 ">
                 
                 <livewire:sidebar_components.title-card />
-                <div class="hidden md:block">
+                <span class="hidden md:block">
                 <livewire:sidebar_components.sidebar-categories />
-                </div>
-                
-                <div class="hidden bg-yellow-100 md:block"> 
-                    Side bar 3
-                </div>
+                </span>
             </div>
             
             <div class="z-9 grid grid-cols-1 grid-rows-6 row-span-3 mt-[-110px] md:mt-0 md:col-span-4 lg:col-span-3 md:grid-cols-1 md:grid-rows-6 lg:grid-cols-1 lg:grid-rows-6 ">
                 <div class="w-screen row-span-1 md:w-auto md:row-span-1 lg:row-span-1">
                     <livewire:navs.menu-bar />
                 </div>
-                <div class="row-span-5 md:row-span-5 lg:row-span-5">
+                <div class="row-span-5 lg:mt-[-35px]">
                     <main>
                         {{ $slot }}
                     </main>

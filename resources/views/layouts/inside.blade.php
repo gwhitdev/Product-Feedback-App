@@ -23,7 +23,7 @@
     <body class="font-sans antialiased bg-gray-50">
         <x-jet-banner />
         <div class="container flex justify-center mx-auto">
-            <div class="grid justify-center w-screen grid-cols-7 gap-4 mx-auto grid-rows-8">
+            <div class="grid justify-center w-screen grid-cols-7 gap-3 mx-auto grid-rows-8">
                 {{ $slot }}
             </div>
         </div>

@@ -11,7 +11,7 @@ class SidebarCategoriesButton extends Component
 
     public function go()
     {
-        return redirect("/categories/$this->category_id");
+        return redirect("/feedback/categories/$this->category_id");
     }
     public function mount($category)
     {

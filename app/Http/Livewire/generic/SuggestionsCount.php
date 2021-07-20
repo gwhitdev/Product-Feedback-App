@@ -10,7 +10,7 @@ class SuggestionsCount extends Component
     public $count;
     public function mount()
     {
-        $this->count = Feedback::all()->count();
+        $this->count = Feedback::where('removed',false)->count();
     }
     public function render()
     {

@@ -37,7 +37,7 @@ Route::get('/feedback/{feedback_id}', [FeedbackController::class, 'detail'])->mi
 Route::get('/feedback/{feedback_id}/edit', [FeedbackController::class, 'edit'])->middleware('auth');
 Route::post('/feedback/{feedback_id}/edit', [FeedbackController::class, 'update'])->middleware('auth');
 Route::get('/feedback/{feedback_id}/delete', [FeedbackController::class, 'delete'])->middleware('auth');
-
+Route::get('/feedback/categories/{category_id}',[FeedbackController::class, 'category'])->middleware('auth');
 // COMMENTS ROUTES
 Route::get('/feedback/{feedback_id}/comments', [CommentsController::class, 'index'])->middleware('auth');
 Route::post('/feedback/{feedback_id}/comments', [CommentsController::class, 'create'])->middleware('auth');
@@ -53,6 +53,9 @@ Route::get('/comments/{comment_id}/replies/{reply_id}', [RepliesController::clas
 Route::get('/comments/{comment_id}/replies/{reply_id}/edit', [RepliesController::class, 'edit'])->middleware('auth');
 Route::post('/comments/{comment_id}/replies/{reply_id}/edit', [RepliesController::class, 'update'])->middleware('auth');
 Route::get('/comments/{comment_id}/replies/{reply_id}/delete', [RepliesController::class, 'delete'])->middleware('auth');
+
+// CATEGORIES ROUTES
+Route::get('/categories/{category_id}', [CategoriesController::class,'index'])->middleware('auth');
 
 // STATUS ROUTES
 Route::get('/feedback/{feedback_id}/change-status/{status_id}', [StatusController::class,'update_status'])->middleware('auth');

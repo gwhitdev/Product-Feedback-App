@@ -11,13 +11,20 @@ use Exception;
 
 class FeedbackController extends Controller
 {
+    public function category(Request $request, $category_id)
+    {
+        
+        $feedback = Feedback::where('removed',false)->where('category_id',$category_id)->get();
+        $categories = Category::all();
+        return view('feedback/index', ['feedback'=>$feedback, "categories"=>$categories]);
+    }
     public function index(Request $request) 
     {
         $feedback = Feedback::reorder('id','desc')->where('removed',false)->get();
         $categories = Category::all();
         return view('feedback/index', ['feedback'=>$feedback, "categories"=>$categories]);
     }
-
+    
     public function create(Request $request)
     {
         $user_id = $request->user()->id;
