@@ -36,13 +36,10 @@
             </div>
             
             <div class="z-9 grid grid-cols-1 grid-rows-6 row-span-3 mt-[-110px] md:mt-0 md:col-span-4 lg:col-span-3 md:grid-cols-1 md:grid-rows-6 lg:grid-cols-1 lg:grid-rows-6 ">
-                <div class="w-screen row-span-1 md:w-auto md:row-span-1 lg:row-span-1">
-                    <livewire:navs.menu-bar />
-                </div>
-                <div class="row-span-5 lg:mt-[-35px]">
-                    <main>
+                
+                    
                         {{ $slot }}
-                    </main>
+                    
                 </div>
             </div>
            

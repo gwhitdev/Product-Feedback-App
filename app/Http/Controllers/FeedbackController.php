@@ -15,14 +15,19 @@ class FeedbackController extends Controller
     {
         
         $feedback = Feedback::where('removed',false)->where('category_id',$category_id)->get();
+        $count = Feedback::where('removed',false)->where('category_id',$category_id)->count();
         $categories = Category::all();
-        return view('feedback/index', ['feedback'=>$feedback, "categories"=>$categories]);
+        
+        return view('feedback/index', ['feedback'=>$feedback, "categories"=>$categories,"count" => $count]);
     }
     public function index(Request $request) 
     {
+        
         $feedback = Feedback::reorder('id','desc')->where('removed',false)->get();
         $categories = Category::all();
-        return view('feedback/index', ['feedback'=>$feedback, "categories"=>$categories]);
+        $count = Feedback::where('removed',false)->count();
+        
+        return view('feedback/index', ['feedback'=>$feedback, "categories"=>$categories, "count"=>$count]);
     }
     
     public function create(Request $request)

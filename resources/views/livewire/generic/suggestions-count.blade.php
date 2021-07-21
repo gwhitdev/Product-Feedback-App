@@ -1,3 +1,4 @@
 <span>
+    
     {{ $count }} Suggestions
 </span>
