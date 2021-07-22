@@ -8,11 +8,66 @@ use App\Models\Comment;
 use App\Models\Status;
 use App\Models\Category;
 use Exception;
-
+use Illuminate\Support\Facades\DB;
 class FeedbackController extends Controller
 {
+    public function sort(Request $request, $sort_by, $category)
+    {
+        
+        $sorting = array(
+            'mostUpvotes' => 'votes',
+            'leastUpvotes' => 'votes',
+            'mostComments' => 'comments',
+            'leastComments' => 'comments',
+        );
+        $sorting_values = array(
+            'mostUpvotes' => 'desc',
+            'leastUpvotes' => 'asc',
+            'mostComments' => 'desc',
+            'leastComments' => 'asc'
+        );
+        
+        if($sorting[$sort_by] == 'comments')
+        {
+            if($sorting_values[$sort_by] == 'asc')
+            {
+                $feedback = Feedback::reorder('comments_count','asc')->get();
+                $count = $feedback->count();
+                return view('feedback/index', ['feedback' => $feedback, "count" => $count]);
+            }
+            if($sorting_values[$sort_by] == 'desc')
+            {
+                $feedback = Feedback::reorder('comments_count','desc')->get();
+                $count = $feedback->count();
+                return view('feedback/index', ['feedback' => $feedback,  "count" => $count]);
+            }
+        }
+        if($sorting[$sort_by] == 'votes')
+        {
+            if($sorting_values[$sort_by] == 'asc')
+            {
+                $feedback = Feedback::reorder('votes', 'asc')->get();
+                $count = $feedback->count();
+                return view('/feedback/index',['feedback'=>$feedback, 'count'=>$count]);
+            }
+            if($sorting_values[$sort_by] == 'desc')
+            {
+                $feedback = Feedback::reorder('votes','desc')->get();
+                $count = $feedback->count();
+                return view('/feedback/index',['feedback'=>$feedback,'count'=>$count]);
+            }
+        }
+        $feedback = Feedback::where('removed',false)->get();
+        $count = $feedback->count();
+        $categories = Category::where('removed',false);
+        return view('feedback/index', ['feedback' => $feedback, "categories"=>$categories, "count" => $count]);
+        
+    }
     public function category(Request $request, $category_id)
     {
+        $category = Category::find($category_id);
+        $count_feedback_in_category = $category->feedback()->count();
+        
         
         $feedback = Feedback::where('removed',false)->where('category_id',$category_id)->get();
         $count = Feedback::where('removed',false)->where('category_id',$category_id)->count();
@@ -24,10 +79,10 @@ class FeedbackController extends Controller
     {
         
         $feedback = Feedback::reorder('id','desc')->where('removed',false)->get();
-        $categories = Category::all();
+        
         $count = Feedback::where('removed',false)->count();
         
-        return view('feedback/index', ['feedback'=>$feedback, "categories"=>$categories, "count"=>$count]);
+        return view('feedback/index', ['feedback'=>$feedback,  "count"=>$count]);
     }
     
     public function create(Request $request)
@@ -48,7 +103,7 @@ class FeedbackController extends Controller
         }
         catch (Exception $e)
         {
-            $request->session()->flash('flas.banner','Your feedback could not be submitted.');
+            $request->session()->flash('flash.banner','Your feedback could not be submitted.');
             $request->session()->flash('flash.bannerStyle','danger');
             return redirect('/feedback');
         }

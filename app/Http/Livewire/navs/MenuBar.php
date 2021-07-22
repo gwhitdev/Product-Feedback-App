@@ -7,10 +7,12 @@ use Livewire\Component;
 class MenuBar extends Component
 {
     public $count;
-    
-    public function mount($count)
+    public $feedback;
+
+    public function mount($count,$feedback)
     {
         $this->count = $count;
+        $this->feedback = $feedback[0];
     }
     
     public function render()

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="w-screen row-span-1 md:w-auto md:row-span-1 lg:row-span-1">
                     
-        <livewire:navs.menu-bar :count="$count"/>
+        <livewire:navs.menu-bar :feedback="$feedback" :count="$count"/>
         
         
     </div>

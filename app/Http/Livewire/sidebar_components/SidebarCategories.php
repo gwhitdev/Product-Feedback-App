@@ -14,7 +14,18 @@ class SidebarCategories extends Component
     }
     public function mount()
     {
-        $this->categories = Category::all();
+        $temp_categories = Category::all();
+        $categories = array();
+        foreach($temp_categories as $c)
+        {
+            if($c->feedback->count() > 0)
+            {
+                error_log($c->category_name);
+                error_log($c->feedback->count());
+                array_push($categories, $c);
+            };
+        };
+        $this->categories = $categories;
     }
     public function render()
     {

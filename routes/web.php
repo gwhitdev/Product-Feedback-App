@@ -30,7 +30,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/dashboard', [UsersController::class, 'index'])->middleware('auth')->name('dashboard');
 
 // FEEDBACK ROUTES
+Route::get('/feedback/sort/{sort_by}/category/{category}',[FeedbackController::class, 'sort'])->middleware('auth');
 Route::get('/feedback', [FeedbackController::class, 'index'])->middleware('auth')->name('feedback');
+//Route::get('/feedback/sort/{sort_by}',[FeedbackController::class, 'sort'])->middleware('auth');
+
 Route::post('/feedback', [FeedbackController::class, 'create'])->middleware('auth');
 Route::get('/feedback/new', [FeedbackController::class, 'new'])->middleware('auth');
 Route::get('/feedback/{feedback_id}', [FeedbackController::class, 'detail'])->middleware('auth');
